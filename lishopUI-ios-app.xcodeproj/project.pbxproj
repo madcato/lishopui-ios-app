@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B3F3CDD26DFE28E00A56959 /* AddListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3F3CDC26DFE28E00A56959 /* AddListView.swift */; };
+		0B3F3CE126DFE2D200A56959 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3F3CE026DFE2D200A56959 /* Article.swift */; };
+		0B3F3CE326DFE31C00A56959 /* Cate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3F3CE226DFE31C00A56959 /* Cate.swift */; };
+		0B3F3CE526DFE35A00A56959 /* Cont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3F3CE426DFE35A00A56959 /* Cont.swift */; };
+		0B3F3CE826DFE85000A56959 /* ShoppingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3F3CE726DFE85000A56959 /* ShoppingListView.swift */; };
+		0B3F3CEA26DFE97000A56959 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3F3CE926DFE97000A56959 /* Shop.swift */; };
 		0B74747B26DEA11700C085DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B74747A26DEA11700C085DD /* AppDelegate.swift */; };
 		0B74747D26DEA11700C085DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B74747C26DEA11700C085DD /* SceneDelegate.swift */; };
 		0B74747F26DEA11700C085DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B74747E26DEA11700C085DD /* ContentView.swift */; };
@@ -16,6 +22,7 @@
 		0B74748A26DEA11800C085DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B74748826DEA11800C085DD /* LaunchScreen.storyboard */; };
 		0B74749526DEA11800C085DD /* lishopUI_ios_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B74749426DEA11800C085DD /* lishopUI_ios_appTests.swift */; };
 		0B7474A026DEA11800C085DD /* lishopUI_ios_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B74749F26DEA11800C085DD /* lishopUI_ios_appUITests.swift */; };
+		0B7474AE26DEA3C200C085DD /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7474AD26DEA3C200C085DD /* Room.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +43,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B3F3CDC26DFE28E00A56959 /* AddListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListView.swift; sourceTree = "<group>"; };
+		0B3F3CE026DFE2D200A56959 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		0B3F3CE226DFE31C00A56959 /* Cate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cate.swift; sourceTree = "<group>"; };
+		0B3F3CE426DFE35A00A56959 /* Cont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cont.swift; sourceTree = "<group>"; };
+		0B3F3CE726DFE85000A56959 /* ShoppingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListView.swift; sourceTree = "<group>"; };
+		0B3F3CE926DFE97000A56959 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		0B74747726DEA11700C085DD /* lishopUI-ios-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lishopUI-ios-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B74747A26DEA11700C085DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0B74747C26DEA11700C085DD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +64,7 @@
 		0B74749B26DEA11800C085DD /* lishopUI-ios-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "lishopUI-ios-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B74749F26DEA11800C085DD /* lishopUI_ios_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lishopUI_ios_appUITests.swift; sourceTree = "<group>"; };
 		0B7474A126DEA11800C085DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0B7474AD26DEA3C200C085DD /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +92,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B3F3CDB26DFE27100A56959 /* AddTab */ = {
+			isa = PBXGroup;
+			children = (
+				0B3F3CDC26DFE28E00A56959 /* AddListView.swift */,
+			);
+			path = AddTab;
+			sourceTree = "<group>";
+		};
+		0B3F3CDF26DFE2C600A56959 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0B3F3CE026DFE2D200A56959 /* Article.swift */,
+				0B3F3CE226DFE31C00A56959 /* Cate.swift */,
+				0B3F3CE426DFE35A00A56959 /* Cont.swift */,
+				0B3F3CE926DFE97000A56959 /* Shop.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0B3F3CE626DFE83700A56959 /* ShoppingListTab */ = {
+			isa = PBXGroup;
+			children = (
+				0B3F3CE726DFE85000A56959 /* ShoppingListView.swift */,
+			);
+			path = ShoppingListTab;
+			sourceTree = "<group>";
+		};
 		0B74746E26DEA11700C085DD = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +142,9 @@
 		0B74747926DEA11700C085DD /* lishopUI-ios-app */ = {
 			isa = PBXGroup;
 			children = (
+				0B3F3CDF26DFE2C600A56959 /* Model */,
+				0B3F3CE626DFE83700A56959 /* ShoppingListTab */,
+				0B3F3CDB26DFE27100A56959 /* AddTab */,
 				0B74747A26DEA11700C085DD /* AppDelegate.swift */,
 				0B74747C26DEA11700C085DD /* SceneDelegate.swift */,
 				0B74747E26DEA11700C085DD /* ContentView.swift */,
@@ -109,6 +153,7 @@
 				0B74748B26DEA11800C085DD /* Info.plist */,
 				0B74748026DEA11700C085DD /* lishopUI_ios_app.xcdatamodeld */,
 				0B74748526DEA11800C085DD /* Preview Content */,
+				0B7474AD26DEA3C200C085DD /* Room.swift */,
 			);
 			path = "lishopUI-ios-app";
 			sourceTree = "<group>";
@@ -269,10 +314,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B3F3CE526DFE35A00A56959 /* Cont.swift in Sources */,
+				0B3F3CE126DFE2D200A56959 /* Article.swift in Sources */,
 				0B74748226DEA11700C085DD /* lishopUI_ios_app.xcdatamodeld in Sources */,
+				0B3F3CEA26DFE97000A56959 /* Shop.swift in Sources */,
+				0B3F3CE326DFE31C00A56959 /* Cate.swift in Sources */,
+				0B3F3CE826DFE85000A56959 /* ShoppingListView.swift in Sources */,
 				0B74747B26DEA11700C085DD /* AppDelegate.swift in Sources */,
+				0B3F3CDD26DFE28E00A56959 /* AddListView.swift in Sources */,
 				0B74747D26DEA11700C085DD /* SceneDelegate.swift in Sources */,
 				0B74747F26DEA11700C085DD /* ContentView.swift in Sources */,
+				0B7474AE26DEA3C200C085DD /* Room.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
