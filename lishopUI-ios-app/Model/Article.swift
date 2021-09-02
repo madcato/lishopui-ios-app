@@ -5,16 +5,16 @@
 //  Created by Daniel Vela on 1/9/21.
 //
 
-import Foundation
+import SwiftUI
 
 class Article: Identifiable {
     var id = UUID()
-    var name: String = ""
-    var category: Cate?
-    var cont: Cont?
-    var shop: Shop?
-    var qty: Int = 0
-    var marked: Bool = false
+    @Published var name: String = ""
+    @Published var category: Cate?
+    @Published var cont: Cont?
+    @Published var shop: Shop?
+    @Published var qty: Int = 0
+    @Published var marked: Bool = false
 
     init(name: String,
          category: Cate? = nil,
@@ -52,10 +52,4 @@ var testArticleList = [
     Article(name: "Apple es una empresa cojonudísima, del todo y para todo", category: testCategories[0])
 ]
 
-func initializeCategories() {
-    testArticleList.forEach { article in
-        let category = article.category
-        category?.articles.append(article)
-    }
-}
 #endif
