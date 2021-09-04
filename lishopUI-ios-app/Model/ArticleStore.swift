@@ -10,10 +10,13 @@ import Combine
 
 class ArticleStore: ObservableObject {
     @Published var articles: [Article]
+    @Published var categories: [Cate]
+    @Published var containers: [Cont]
 
-    init(articles: [Article] = []) {
+    init(articles: [Article] = [], categories: [Cate] = [], containers: [Cont] = []) {
         self.articles = articles
-        
+        self.categories = categories
+        self.containers = containers
     }
 
     private func initializeCategories(artciles: [Article]) {

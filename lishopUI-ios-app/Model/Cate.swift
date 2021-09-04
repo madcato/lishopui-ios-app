@@ -7,7 +7,15 @@
 
 import Foundation
 
-class Cate: Identifiable {
+class Cate: Identifiable, Hashable {
+    static func == (lhs: Cate, rhs: Cate) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
     var id = UUID()
     var name: String = ""
     var articles: [Article] = []

@@ -13,16 +13,12 @@ struct ShoppingListView: View {
     var body: some View {
         NavigationView {
         List() {
-            Button(action: addArticle) {
-                Text("Add article")
-            }
-
             Picker(selection: .constant(1), label: Text("Type")) {
                 Text("Category").tag(1)
                 Text("Shop").tag(2)
             }
             .pickerStyle(SegmentedPickerStyle())
-            // Mirar de hacer un groupedByCateogry(articles)
+            // Mirar de hacer un groupedByCategory(articles)
             ForEach(store.articles) { article in
 //                Section(header: Text(category.name)) {
 //                    ForEach(category.articles) { article in
@@ -31,8 +27,6 @@ struct ShoppingListView: View {
 //                }
                 ShoppingListViewCell(article: article)
             }
-            .onDelete(perform: delete)
-            .onMove(perform: move)
         }
         .navigationBarTitle(Text("Articles"))
         .navigationBarItems(trailing: EditButton())
@@ -44,13 +38,6 @@ struct ShoppingListView: View {
         }
     }
 
-    func addArticle() {
-        store.articles.append(Article(name: "Pepe"))
-    }
-
-    func delete(at offsets: IndexSet) {
-        store.articles.remove(atOffsets: offsets)
-    }
 
     func move(from source: IndexSet, to destination: Int) {
         store.articles.move(fromOffsets: source, toOffset: destination)
@@ -75,6 +62,7 @@ struct ShoppingListViewCell: View {
             VStack(alignment: .leading) {
                 Text(article.name)
                     .multilineTextAlignment(.leading)
+                    .font(.headline)
                 HStack(spacing: 3.0) {
                     Text(String(article.qty))
                         .foregroundColor(.secondary)
@@ -86,6 +74,7 @@ struct ShoppingListViewCell: View {
                     Text(article.shop?.name ?? "")
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.trailing)
+                        .font(.italic(.body)())
                 }
             }
         }.onTapGesture { marked.toggle() }
