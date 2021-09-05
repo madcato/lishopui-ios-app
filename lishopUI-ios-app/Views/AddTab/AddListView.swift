@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AddListView: View {
-    @ObservedObject var store = ArticleStore()
+    @EnvironmentObject var store: ArticleStore
 
     var body: some View {
         NavigationView {
@@ -21,7 +21,8 @@ struct AddListView: View {
     //                        ShoppingListViewCell(article: article)
     //                    }
     //                }
-                    NavigationLink(destination: ArticleDetailView(article: article, store: store)) {
+                    NavigationLink(destination: ArticleDetailView(article: article)
+                                    .environmentObject(store)) {
                         AddListViewCell(article: article)
                     }
                 }
@@ -51,19 +52,21 @@ struct AddListView: View {
 #if DEBUG
 struct AddListView_Previews: PreviewProvider {
     static var previews: some View {
-        AddListView(store: ArticleStore(articles: testArticleList))
+    AddListView().environmentObject(ArticleStore(articles: testArticleList,
+                                                 categories: testCategories,
+                                                 containers: testContainers,
+                                                shops: testShops))
     }
 }
 #endif
 
 struct AddListViewCell: View {
-    let article: Article
-    @State private var marked = false
+    @ObservedObject var article: Article
 
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(article.category?.name ?? "")
+                Text(article.category.name)
                     .multilineTextAlignment(.leading)
                     .font(.caption)
                     .foregroundColor(.secondary)
@@ -81,7 +84,7 @@ struct AddListViewCell: View {
                         .multilineTextAlignment(.leading)
                         .font(.title2)
                         .padding(.trailing, 10)
-                    Text(article.cont?.name ?? "")
+                    Text(article.cont.name)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.leading)
                         .font(.caption2)
@@ -93,6 +96,6 @@ struct AddListViewCell: View {
                         .padding(.trailing, 20)
                 }
             }
-        }.onTapGesture { marked.toggle() }
+        }
     }
 }

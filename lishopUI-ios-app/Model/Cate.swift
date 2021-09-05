@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Cate: Identifiable, Hashable {
+class Cate: Identifiable, Hashable, ObservableObject {
     static func == (lhs: Cate, rhs: Cate) -> Bool {
         lhs.id == rhs.id
     }

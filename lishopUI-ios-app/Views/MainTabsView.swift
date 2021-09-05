@@ -8,22 +8,23 @@
 import SwiftUI
 
 struct MainTabsView: View {
-    @ObservedObject var store = ArticleStore()
+    @StateObject var store: ArticleStore
 
     var body: some View {
         NavigationView {
             TabView() {
-                ShoppingListView(store: store)
+                ShoppingListView()
                     .tabItem {
                         Image(systemName: "square.and.pencil")
                         Text("Shopping list")
                     }
-                AddListView(store: store)
+                AddListView()
                     .tabItem {
                         Image(systemName: "clock.fill")
                         Text("Add")
                     }
             }
+            .environmentObject(store)
         }
     }
 }

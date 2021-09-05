@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ArticleDetailView: View {
     @ObservedObject var article: Article
-    @ObservedObject var store: ArticleStore
+    @EnvironmentObject var store: ArticleStore
 
     var body: some View {
         NavigationView() {
@@ -23,6 +23,7 @@ struct ArticleDetailView: View {
                             Text($0.name).tag($0)
                         }
                     }
+                    .pickerStyle(DefaultPickerStyle())
                 }
                 Section {
                     Picker(selection: $article.cont, label: Text("Container:")) {
@@ -30,6 +31,8 @@ struct ArticleDetailView: View {
                             Text($0.name).tag($0)
                         }
                     }
+                    .pickerStyle(WheelPickerStyle())
+                    // TODO: make change stype to automatic <-> inline
                 }
                 Section {
                     Stepper(value: $article.qty) {
@@ -42,6 +45,15 @@ struct ArticleDetailView: View {
                             .cornerRadius(6.0)
                     }
                 }
+                Section {
+                    Picker(selection: $article.cont, label: Text("Shop:")) {
+                        ForEach(store.shops) {
+                            Text($0.name).tag($0)
+                        }
+                    }
+                    .pickerStyle(WheelPickerStyle())
+                    // TODO: make change stype to automatic <-> inline
+                }
             }
         }.navigationBarTitle(Text("Article"))
     }
@@ -52,8 +64,8 @@ struct ArticleDetailView: View {
 #if DEBUG
 struct ArticleDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ArticleDetailView(article: testArticleList[0],
-                          store: testStore)
+        ArticleDetailView(article: testArticleList[0])
+            .environmentObject(testStore)
     }
 }
 #endif

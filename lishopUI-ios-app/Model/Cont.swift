@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Cont: Identifiable, Hashable {
+class Cont: Identifiable, Hashable, ObservableObject {
     static func == (lhs: Cont, rhs: Cont) -> Bool {
         lhs.id == rhs.id
     }
@@ -17,6 +17,10 @@ struct Cont: Identifiable, Hashable {
     }
 
     var id = UUID()
-    var name: String
+    var name: String = ""
+
+    init(name: String) {
+        self.name = name
+    }
 }
 

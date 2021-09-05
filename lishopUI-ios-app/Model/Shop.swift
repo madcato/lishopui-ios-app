@@ -7,7 +7,19 @@
 
 import Foundation
 
-struct Shop: Identifiable {
+class Shop: Identifiable, Hashable, ObservableObject {
+    static func == (lhs: Shop, rhs: Shop) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
     var id = UUID()
-    var name: String
+    var name: String = ""
+
+    init(name: String) {
+        self.name = name
+    }
 }

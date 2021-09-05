@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ShoppingListView: View {
-    @ObservedObject var store = ArticleStore()
+    @EnvironmentObject var store: ArticleStore
 
     var body: some View {
         NavigationView {
@@ -47,18 +47,20 @@ struct ShoppingListView: View {
 #if DEBUG
 struct ShoppingListView_Previews: PreviewProvider {
     static var previews: some View {
-        ShoppingListView(store: ArticleStore(articles: testArticleList))
+        ShoppingListView().environmentObject(ArticleStore(articles: testArticleList,
+                                                          categories: testCategories,
+                                                          containers: testContainers,
+                                                          shops: testShops))
     }
 }
 #endif
 
 struct ShoppingListViewCell: View {
-    let article: Article
-    @State private var marked = false
+    @ObservedObject var article: Article
 
     var body: some View {
         HStack {
-            Image(marked ? "marked" : "unmarked")
+            Image(article.marked ? "marked" : "unmarked")
             VStack(alignment: .leading) {
                 Text(article.name)
                     .multilineTextAlignment(.leading)
@@ -67,16 +69,18 @@ struct ShoppingListViewCell: View {
                     Text(String(article.qty))
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.leading)
-                    Text(article.cont?.name ?? "")
+                    Text(article.cont.name)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.leading)
                     Spacer()
-                    Text(article.shop?.name ?? "")
+                    Text(article.shop.name)
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.trailing)
                         .font(.italic(.body)())
                 }
             }
-        }.onTapGesture { marked.toggle() }
+        }
+        .contentShape(Rectangle())
+        .onTapGesture { article.marked.toggle() }
     }
 }
