@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct ShoppingListView: View {
+    enum GroupType {
+        case category
+        case shop
+    }
     @EnvironmentObject var store: ArticleStore
+    @State var groupedBy: GroupType = .category
 
     var body: some View {
         NavigationView {
         List() {
-            Picker(selection: .constant(1), label: Text("Type")) {
-                Text("Category").tag(1)
-                Text("Shop").tag(2)
+            Picker(selection: $groupedBy, label: Text("Type")) {
+                Text("Category").tag(GroupType.category)
+                Text("Shop").tag(GroupType.shop)
             }
             .pickerStyle(SegmentedPickerStyle())
             // Mirar de hacer un groupedByCategory(articles)
