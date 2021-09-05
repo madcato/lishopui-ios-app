@@ -17,30 +17,43 @@ struct ShoppingListView: View {
 
     var body: some View {
         NavigationView {
-        List() {
+        List {
             Picker(selection: $groupedBy, label: Text("Type")) {
                 Text("Category").tag(GroupType.category)
                 Text("Shop").tag(GroupType.shop)
             }
             .pickerStyle(SegmentedPickerStyle())
-            // Mirar de hacer un groupedByCategory(articles)
-            ForEach(store.articles) { article in
-//                Section(header: Text(category.name)) {
-//                    ForEach(category.articles) { article in
-//                        ShoppingListViewCell(article: article)
-//                    }
-//                }
-                ShoppingListViewCell(article: article)
+            if groupedBy == .category {
+                ForEach(store.categorySections) { categorySection in
+                    Section(header: Text(categorySection.category.name)) {
+                        ForEach(categorySection.articles) { article in
+                            ShoppingListViewCell(article: article)
+                                .environmentObject(store)
+                        }
+                    }
+                }
+            } else {
+                ForEach(store.shopSections) { shopSection in
+                    Section(header: Text(shopSection.shop.name)) {
+                        ForEach(shopSection.articles) { article in
+                            ShoppingListViewCell(article: article)
+                                .environmentObject(store)
+                        }
+                    }
+                }
+            }
+            if store.someArticlesMarked {
+                Section(footer: HStack { Spacer()
+                    Button("Check out") { store.clearMarkedArticles() }.font(.callout)
+                                        Spacer()
+                                }) {}
             }
         }
         .navigationBarTitle(Text("Articles"))
         .navigationBarItems(trailing: EditButton())
         .listStyle(GroupedListStyle())
+        }
 
-        if true {
-            Text("PRICE")
-        }
-        }
     }
 
 
@@ -61,6 +74,7 @@ struct ShoppingListView_Previews: PreviewProvider {
 #endif
 
 struct ShoppingListViewCell: View {
+    @EnvironmentObject var store: ArticleStore
     @ObservedObject var article: Article
 
     var body: some View {
@@ -86,6 +100,9 @@ struct ShoppingListViewCell: View {
             }
         }
         .contentShape(Rectangle())
-        .onTapGesture { article.marked.toggle() }
+        .onTapGesture {
+            article.marked.toggle()
+            store.checkMarked()
+        }
     }
 }

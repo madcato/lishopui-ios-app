@@ -66,12 +66,13 @@ var testShops = [
     Shop(name: "Lidl")
 ]
 var testArticleList = [
-    Article(name: "Apple", category: testCategories[0]),
-    Article(name: "Soup", category: testCategories[1], shop: testShops[0]),
-    Article(name: "Water", category: testCategories[2], cont: testContainers[1]),
-    Article(name: "Salt", category: testCategories[1], cont: testContainers[0], shop: testShops[1], marked: true),
-    Article(name: "Orange juice", category: testCategories[2], cont: testContainers[1]),
-    Article(name: "Apple es una empresa cojonudísima, del todo y para todo", category: testCategories[0])
+    Article(name: "Apple", category: testCategories[1], cont: testContainers[0], shop: testShops[1], marked: true),
+    Article(name: "Soup", category: testCategories[0], cont: testContainers[1], shop: testShops[1], marked: true),
+    Article(name: "Water", category: testCategories[3], cont: testContainers[2], shop: testShops[1], marked: true),
+    Article(name: "Cigars", category: testCategories[2], cont: testContainers[0], shop: testShops[0], marked: true),
+    Article(name: "Salt", category: testCategories[2], cont: testContainers[2], shop: testShops[0], marked: true),
+    Article(name: "Orange juice", category: testCategories[1], cont: testContainers[1], shop: testShops[2], marked: true),
+    Article(name: "Coffer", category: testCategories[1], cont: testContainers[0], shop: testShops[2], marked: true)
 ]
 var testStore = ArticleStore(articles: testArticleList, categories: testCategories, containers: testContainers, shops: testShops)
 #endif
