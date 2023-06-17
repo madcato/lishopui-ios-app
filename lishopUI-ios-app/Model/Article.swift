@@ -2,49 +2,53 @@
 //  Article.swift
 //  lishopUI-ios-app
 //
-//  Created by Daniel Vela on 1/9/21.
+//  Created by Daniel Vela on 21/4/23.
 //
 
+import CoreData
 import SwiftUI
+import OSLog
 
-class Article: Identifiable, ObservableObject {
-    var id = UUID()
-    @Published var name: String
-    @Published var category: Cate = Cate(name: "")
-    @Published var cont: Cont = Cont(name: "")
-    @Published var shop: Shop = Shop(name: "")
-    @Published var qty: Int = 0
-    @Published var marked: Bool = false
+// MARK: - Core Data
 
-    init() {
-        name = ""
+/// Managed object subclass for the Article entity.
+class Article: NSManagedObject {
+
+    // The characteristics of a article.
+    @NSManaged var checked: Bool
+    @NSManaged var firstLettes: String
+    @NSManaged var name: String
+    @NSManaged var prize: Double
+    @NSManaged var qty: Int
+    @NSManaged var category: Cate?
+    @NSManaged var shop: Shop?
+    @NSManaged var container: Cont?
+
+}
+
+// MARK: - SwiftUI
+
+extension Article {
+    
+    /// An earthquake for use with canvas previews.
+    static var preview: Article {
+        let article = Article.makePreviews(count: 1)
+        return article[0]
     }
 
-    init(name: String,
-         category: Cate? = nil,
-         cont: Cont? = nil,
-         shop: Shop? = nil,
-         marked: Bool = false) {
-        self.name = name
-        if let category = category {
-            self.category = category
+    @discardableResult
+    static func makePreviews(count: Int) -> [Article] {
+        var articles = [Article]()
+        let viewContext = ArticleProvider.preview.container.viewContext
+        for index in 0..<count {
+            let article = Article(context: viewContext)
+            article.code = UUID().uuidString
+            article.time = Date().addingTimeInterval(Double(index) * -300)
+            article.magnitude = .random(in: -1.1...10.0)
+            article.place = "15km SSW of Cupertino, CA"
+            articles.append(quake)
         }
-        if let cont = cont {
-            self.cont = cont
-        }
-        if let shop = shop {
-            self.shop = shop
-        }
-        self.marked = false
-    }
-
-    func increment() {
-        qty += 1
-    }
-
-    func decrement() {
-        qty -= 1
-        qty = qty < 0 ? 0 : qty
+        return articles
     }
 }
 

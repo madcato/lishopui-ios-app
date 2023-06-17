@@ -5,15 +5,17 @@
 //  Created by Daniel Vela on 4/9/21.
 //
 
+import CoreData
 import SwiftUI
 
 struct MainTabsView: View {
+    @Environment
     @StateObject var store: ArticleStore
 
     var body: some View {
         NavigationView {
             TabView() {
-                ShoppingListView()
+                ShoppingListView().environment(\.managedObjectContext, container.viewContext)
                     .tabItem {
                         Image(systemName: "square.and.pencil")
                         Text("Shopping list")
